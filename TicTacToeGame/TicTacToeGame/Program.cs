@@ -1,12 +1,12 @@
 ﻿using System;
 namespace TicTacToeGame
 {
-    class TicTacToe_Game
+    public class TicTacToe_Game
     {
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to the TicTacToe Game!");
-            CreateBoard();
+            char[] board = CreateBoard();
             Console.WriteLine("Board created.");
         }
         static char[] CreateBoard()
