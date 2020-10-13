@@ -46,7 +46,7 @@ namespace TicTacToeGame
             }
             while (board[moveIndex] != ' ')
             {
-                Console.WriteLine("Invalid move.\nEnter index where to make move(1-9): ");
+                Console.WriteLine("Space not empty.\nEnter index where to make move(1-9): ");
                 moveIndex = Convert.ToInt32(Console.ReadLine());
             }
             return moveIndex;
