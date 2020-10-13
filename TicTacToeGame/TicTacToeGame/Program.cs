@@ -24,9 +24,9 @@ namespace TicTacToeGame
         {
             Console.WriteLine("Choose your move(O/X): ");
             char letter = Console.ReadLine()[0];
-            while (letter != 'X' && letter != 'O')
+            while (letter != 'X' && letter != 'O' && letter != 'x' && letter != 'o')
             {
-                Console.WriteLine("Invalid move.\nChoose again(O/X): ");
+                Console.WriteLine("Invalid move. Choose again(O/X): ");
                 letter = Console.ReadLine()[0];
             } 
             return letter;
