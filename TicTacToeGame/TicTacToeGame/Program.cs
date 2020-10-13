@@ -8,15 +8,36 @@ namespace TicTacToeGame
             Console.WriteLine("Welcome to the TicTacToe Game!");
             char[] board = CreateBoard();
             Console.WriteLine("Board created.");
-            char letter = ChooseLetter();
-            Console.WriteLine("Your move: " + letter);
-            int moveIndex = MakeMove(board);
-            if(checkSpace(board)==true)
+            bool toss = Toss();
+            if(toss == true)
             {
-                moveIndex = MakeMove(board);
+                char letter = ChooseLetter();
+                Console.WriteLine("Your move: " + letter);
+                int moveIndex = MakeMove(board);
+                Console.WriteLine("Showing Board: ");
+                Showboard(board, moveIndex, letter);
             }
-            Console.WriteLine("Showing Board: ");
-            Showboard(board, moveIndex, letter);
+        }
+        static bool Toss()
+        {
+            int chooseToss;
+            Random random = new Random();
+            do
+            {
+                Console.WriteLine("Enter 0 or 1: ");
+                chooseToss = Convert.ToInt32(Console.ReadLine());
+            } while (chooseToss != 1 && chooseToss != 0);
+            int toss = random.Next(0, 2);
+            if(toss == chooseToss)
+            {
+                Console.WriteLine("You Win.");
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("Computer Won.");
+                return false;
+            }
         }
         static char[] CreateBoard()
         {
@@ -35,7 +56,7 @@ namespace TicTacToeGame
             {
                 Console.WriteLine("Invalid move. Choose again(O/X): ");
                 letter = Char.ToUpper(Console.ReadLine()[0]);
-            } 
+            }
             return letter;
         }
         static int MakeMove(char[] board)
@@ -48,22 +69,12 @@ namespace TicTacToeGame
                 Console.WriteLine("Invalid index. Choose again(1-9): ");
                 moveIndex = Convert.ToInt32(Console.ReadLine());
             }
-            /*while (board[moveIndex] != ' ')
-            {
-                Console.WriteLine("Space not empty.\nEnter an empty index(1-9): ");
-                moveIndex = Convert.ToInt32(Console.ReadLine());
-            }*/
-            return moveIndex;
-        }
-        static bool checkSpace(char[] board)
-        {
-            int moveIndex = MakeMove(board);
             while (board[moveIndex] != ' ')
             {
-                Console.WriteLine("Space not empty.\nEnter an empty index(1-9): ");
+                Console.WriteLine("Space not empty.\nEnter index where to make move(1-9): ");
                 moveIndex = Convert.ToInt32(Console.ReadLine());
             }
-            return true;
+            return moveIndex;
         }
         static void Showboard(char[] board, int moveIndex, char letter)
         {
