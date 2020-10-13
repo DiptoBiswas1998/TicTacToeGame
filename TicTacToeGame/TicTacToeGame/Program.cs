@@ -39,6 +39,11 @@ namespace TicTacToeGame
             int moveIndex;
             Console.WriteLine("Enter index where to make move(1-9): ");
             moveIndex = Convert.ToInt32(Console.ReadLine());
+            while(moveIndex < 1 | moveIndex > 9)
+            {
+                Console.WriteLine("Invalid index. Choose again(1-9): ");
+                moveIndex = Convert.ToInt32(Console.ReadLine());
+            }
             while (board[moveIndex] != ' ')
             {
                 Console.WriteLine("Invalid move.\nEnter index where to make move(1-9): ");
