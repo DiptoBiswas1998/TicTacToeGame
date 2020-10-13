@@ -8,6 +8,8 @@ namespace TicTacToeGame
             Console.WriteLine("Welcome to the TicTacToe Game!");
             char[] board = CreateBoard();
             Console.WriteLine("Board created.");
+            char letter = ChooseLetter();
+            Console.WriteLine("Your move: " + letter);
         }
         static char[] CreateBoard()
         {
@@ -17,6 +19,17 @@ namespace TicTacToeGame
                 board[spaceIndex] = ' ';
             }
             return board;
+        }
+        static char ChooseLetter()
+        {
+            Console.WriteLine("Choose your move(O/X): ");
+            char letter = Console.ReadLine()[0];
+            while (letter != 'X' && letter != 'O')
+            {
+                Console.WriteLine("Invalid move.\nChoose again(O/X): ");
+                letter = Console.ReadLine()[0];
+            } 
+            return letter;
         }
     }
 }
