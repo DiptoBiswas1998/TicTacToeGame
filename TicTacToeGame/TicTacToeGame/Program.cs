@@ -10,8 +10,9 @@ namespace TicTacToeGame
             Console.WriteLine("Board created.");
             char letter = ChooseLetter();
             Console.WriteLine("Your move: " + letter);
+            int moveIndex = MakeMove(board);
             Console.WriteLine("Showing Board: ");
-            Showboard(board);
+            Showboard(board, moveIndex, letter);
         }
         static char[] CreateBoard()
         {
@@ -33,8 +34,21 @@ namespace TicTacToeGame
             } 
             return letter;
         }
-        static void Showboard(char[] board)
+        static int MakeMove(char[] board)
         {
+            int moveIndex;
+            Console.WriteLine("Enter index where to make move(1-9): ");
+            moveIndex = Convert.ToInt32(Console.ReadLine());
+            while (board[moveIndex] != ' ')
+            {
+                Console.WriteLine("Invalid move.\nEnter index where to make move(1-9): ");
+                moveIndex = Convert.ToInt32(Console.ReadLine());
+            }
+            return moveIndex;
+        }
+        static void Showboard(char[] board, int moveIndex, char letter)
+        {
+            board[moveIndex] = letter;
             Console.WriteLine(board[1] + " | " + board[2] + " | " + board[3]);
             Console.WriteLine("__________");
             Console.WriteLine(board[4] + " | " + board[5] + " | " + board[6]);
