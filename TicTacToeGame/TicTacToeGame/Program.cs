@@ -11,6 +11,10 @@ namespace TicTacToeGame
             char letter = ChooseLetter();
             Console.WriteLine("Your move: " + letter);
             int moveIndex = MakeMove(board);
+            if(checkSpace(board)==true)
+            {
+                moveIndex = MakeMove(board);
+            }
             Console.WriteLine("Showing Board: ");
             Showboard(board, moveIndex, letter);
         }
@@ -39,17 +43,27 @@ namespace TicTacToeGame
             int moveIndex;
             Console.WriteLine("Enter index where to make move(1-9): ");
             moveIndex = Convert.ToInt32(Console.ReadLine());
-            while(moveIndex < 1 | moveIndex > 9)
+            while (moveIndex < 1 | moveIndex > 9)
             {
                 Console.WriteLine("Invalid index. Choose again(1-9): ");
                 moveIndex = Convert.ToInt32(Console.ReadLine());
             }
+            /*while (board[moveIndex] != ' ')
+            {
+                Console.WriteLine("Space not empty.\nEnter an empty index(1-9): ");
+                moveIndex = Convert.ToInt32(Console.ReadLine());
+            }*/
+            return moveIndex;
+        }
+        static bool checkSpace(char[] board)
+        {
+            int moveIndex = MakeMove(board);
             while (board[moveIndex] != ' ')
             {
-                Console.WriteLine("Space not empty.\nEnter index where to make move(1-9): ");
+                Console.WriteLine("Space not empty.\nEnter an empty index(1-9): ");
                 moveIndex = Convert.ToInt32(Console.ReadLine());
             }
-            return moveIndex;
+            return true;
         }
         static void Showboard(char[] board, int moveIndex, char letter)
         {
