@@ -26,11 +26,11 @@ namespace TicTacToeGame
         static char ChooseLetter()
         {
             Console.WriteLine("Choose your move(O/X): ");
-            char letter = Console.ReadLine()[0];
-            while (letter != 'X' && letter != 'O' && letter != 'x' && letter != 'o')
+            char letter = Char.ToUpper(Console.ReadLine()[0]);
+            while (letter != 'X' && letter != 'O')
             {
                 Console.WriteLine("Invalid move. Choose again(O/X): ");
-                letter = Console.ReadLine()[0];
+                letter = Char.ToUpper(Console.ReadLine()[0]);
             } 
             return letter;
         }
